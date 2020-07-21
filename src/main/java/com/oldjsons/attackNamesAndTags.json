@@ -1,0 +1,345 @@
+{"assetsAttackTags": {
+"network": ["Telnet", "WIFI", "DialupModem", "Profibus"],
+"ProdZone":["ProdZone"],
+"IccpZone": ["IccpZone"],
+"DemilitarizedZone": ["DemilitarizedZone"],
+"Network": ["InternalNetwork"],
+"alarm": ["Alarm"],
+"host": ["Windows", "Redhat", "Linux"],
+"pcu": ["PCU"],
+"WindowsHost": ["Windows"],
+"LinuxHost": ["Linux"],
+"RedhatHost": ["Redhat"],
+"AD": ["AD"],
+"DNS": ["DNS"],
+"NIS": ["NIS"],
+"NTP": ["NTP"],
+"PseServer": ["PSE"],
+"DataEngineeringServer": ["DE"],
+"password": ["ShortPassword", "WeakPassword"],
+"appServer": ["MasterStation", "Historian"],
+"Oracle": ["Oracle"],
+"Postgre": ["Postgre"],
+"Avanti": ["Avanti"],
+"MMI": ["KillDisk", "Industroyers", "LockerGoga", "ModbusEnabled", "HMI"],
+"product": ["Program"],
+"user": ["Account"],
+"Account": ["Account"],
+"DEAccount": ["DEAccount"],
+"PSEAccount": ["PSEAccount"],
+"ADLinuxAccount": ["ADLinuxAccount"],
+"ADWindowsAccount": ["ADWindowsAccount"],
+"kerberos": ["ShortPassword"],
+"backup_server": ["HP_DP_BACKUP"],
+"Diod": ["DataDiode"],
+"Firewall": ["CiscoFirewall"],
+"NGFW":["FortiGate"],
+"iccpserver": ["IccpServer"],
+"antivirus": ["EPO", "MacAfee"],
+"UnidirectionalGateway": ["UnidirectionalGateway"],
+"router": ["Router"],
+"externalSCADA": ["ExternalSCADA"],
+"Zone": ["Zone"],
+"rtu": ["RTU"],
+"accessServer": [],
+"PCUAccount": ["PCUAccount"]
+},
+  "attacks": {
+    "Oracle": ["accessDB", "remoteListenerMemoryCorrupt"],
+    "Postgre": ["accessDB", "bypassInputValidation", "bypassBoundaryChecks", "remoteDenialOfService", "overflowBuffer"],
+    "Avanti": ["accessDB"],
+    "Windows":["obtainWindowsSpecifics"],
+    "Program": ["uploadMaliciousProduct"],
+    "Linux": ["obtainLinuxSpecifics"],
+    "Redhat": ["obtainRedhatSpecifics"],
+    "Telnet": ["sniffNetwork"],
+    "WIFI": ["wifiCracking"],
+    "DialupModem": [],
+    "InternalNetwork": ["gainInitialAccess"],
+    "Profibus": ["replaceMaliciousBlock"],
+    "ShortPassword": ["guessPassword"],
+    "WeakPassword": ["guessPassword"],
+    "Account": ["guessPasswordAccount","accessAccount"],
+    "DEAccount": ["obtainDEAccount", "connectDEAccount"],
+    "PSEAccount": ["obtainPseAccount", "connectPseAccount"],
+    "ADLinuxAccount": ["obtainADLinuxAccount", "connectADLinuxAccount"],
+    "ADWindowsAccount": ["obtainADWindowsAccount", "connectADWindowsAccount"],
+    "KillDisk": ["deleteSystemFiles"],
+    "Industroyers": ["overwriteConfigFiles", "manipulateView"],
+    "LockerGoga": ["useLockerGoga"],
+    "ModbusEnabled" : [],
+    "HMI": ["connectAlarm", "obtainAccessToServer", "accessSystemFiles"],
+    "MasterStation": ["useFlameTool", "useDuquTool", "accessProduct", "obtainDeviceSpecifics", "accessAntivirus", "accessToCriticalProcess"],
+    "Historian": ["gainInitialAccess", "accessDB", "connectAlarm", "obtainBackupServer"],
+    "MicrosoftWindowsSQLServer2003": [],
+    "DNS": ["obtainDeviceSpecifics", "poisonDNS"],
+    "AD": ["obtainDeviceSpecifics", "obtainADWindowsAccount", "connectADWindowsAccount", "obtainADLinuxAccount", "connectADLinuxAccount", "authenticateADServer"],
+    "DE": ["obtainDEAccount", "connectDEAccount"],
+    "PSE": ["obtainPseAccount", "connectPseAccount"],
+    "NIS": ["obtainDeviceSpecifics"],
+    "NTP": ["obtainDeviceSpecifics", "reconfigureAlarmClock"],
+    "Alarm" : ["modifyAlarmSettings", "connectAlarm"],
+    "DemilitarizedZone": ["accessToDMZ", "bypassFirewall","bypassFirewallToDMZ", "bypassDiodToDMZ", "physicalAccessUSG", "physicalShutdownDiod"],
+    "IccpZone": ["accessToICCP", "transportLayerAttacks"],
+    "ProdZone": ["accessToProd", "bypassFirewall","bypassFirewallToProd", "bypassDiodToProd", "physicalAccessUSG", "physicalShutdownDiod"],
+    "Zone": ["gainInitialAccess","bypassFirewall", "physicalShutdownDiod"],
+    "DataDiode": ["physicalShutdownDiod"],
+    "CiscoFirewall": ["useCamouflagedMalware", "bypassFirewall","bypassFirewallToDMZ", "bypassFirewallToProd", "accessRouter", "connectAlarm", "obtainDeviceSpecifics"],
+    "FortiGate": ["exploitVulnerableFunction"],
+    "HP_DP_BACKUP": ["obtainBackupData"],
+    "IccpServer": ["obtainAccessIccp"],
+    "PCU": ["controlThePCU", "obtainAccessToServer"],
+    "MacAfee": ["misconfigureMacAfee"],
+    "EPO": ["controlAntivirus", "accessAntivirus"],
+    "UnidirectionalGateway": ["allowWrongSecurityUpdatesUSG", "takeOverUSG"],
+    "Router": ["reconfigureRouter"],
+    "ExternalSCADA":["accessExternalSCADA"],
+    "RTU": ["accessRTUFromField"],
+    "PCUAccount": ["accessPCU"]
+  },
+  "protections": {
+    "NISServer": ["whitelist"],
+    "NTPServer": ["whitelist"],
+    "IccpServer": ["whitelist"],
+    "Password": ["strongPassword"],
+    "HumanMachineInterface": ["restrictFileAccess", "multifactorAuthentication", "physicalSecurityOfDevices",
+      "restrictAccessToControlRooms", "restrictAccessToPortableDevices", "restrictAccessToRemovableMedia",
+      "detectSuspiciousFiles", "runMalwareDetection", "runAntivirus", "identifyUnnecessarySystemUtils",
+      "softwareRestrictionPolicies", "whitelistSoftwares", "provideTangibleRecords", "intrusionDetectionSystems"],
+    "AppServer": ["logDataLossPrevention"],
+    "InternalNetwork": ["encryptNetworkTraffic", "disconnectUnusedModems"],
+    "ProdZone": ["useIPsec", "useSecureTransmissionICCP", " dataLinkEncryption", "useOpenSSL"],
+    "DemilitarizedZone":["useIPsec", "useSecureTransmissionICCP", " dataLinkEncryption", "useOpenSSL"],
+    "Zone": ["useIPsec", "useSecureTransmissionICCP", " dataLinkEncryption", "useOpenSSL"],
+    "IccpZone": ["useIPsec", "useSecureTransmissionICCP", " dataLinkEncryption", "useOpenSSL"],
+    "NGFW": ["clientSideInpuSanitization"],
+    "ActiveDirectory": ["cleanupDomainAdminGroup", "distinguishAccountTypes", "useLAPS"],
+    "DNSServer": ["protectionAgainstBotnets", "contentFiltering"],
+    "RemoteTerminalUnit": ["circuitProtection"],
+    "ProcessCommunicationUnit": ["disableUnauthorisedAccess"],
+    "Alarm":["applicatioLevelUserPriveleges", "reportUnauthorisedLogin"],
+    "OracleDatabase": ["sanitizeInput", "usePreparedStatements"],
+    "PostgreDatabase": ["sanitizeInput", "usePreparedStatements"],
+    "Product": ["applicationSecurityGuidelines"],
+    "Account": ["doubleAuthentication"],
+    "BackupServer": ["dataEncryptionForStorage", "runningSELinux"],
+    "Antivirus": ["disableUnauthorisedAccess"],
+    "DataEngineeringServer": ["whitelist"],
+    "PseServer": ["whitelist"]
+  },
+  "potentialAttacksInAssociation": {
+    "host-network-association": [{"gainInitialAccess":"obtainDeviceSpecifics"}],
+    "firewall-zone-association": [{"bypassFirewall":"bypassFirewall"}],
+    "alarm-appserver-association": [{"connectAlarm":"connectAlarm"}],
+    "alarm-mmi-association" : [{"connectAlarm": "connectAlarm"}],
+    "prodzone-firewall-association": [{"accessToProd":"bypassFirewallToProd"}],
+    "diod-prodzone-association": [{"physicalShutdownDiod":"physicalShutdownDiod"}],
+    "diod-dmzzone-association": [{"physicalShutdownDiod":"physicalShutdownDiod"}],
+    "dmz-firewall-association": [{"accessToDMZ":"bypassFirewallToDMZ"}],
+    "user-mmi-association": [{"escalatePrilevelegeToAdmin": "obtainAccessToServer"}],
+    "mmi-appserver-association": [{"gainInitialAccess":"obtainAccessToServer"}],
+    "user-appserver-association": [{"gainInitialAccess": "accessAccount"}],
+    "appserver-product-association": [{"accessProduct":"uploadMaliciousProduct"}],
+    "analysisServer-product-association": [{"accessProduct":"gatherInfoAboutIndustrialProcess"}],
+    "appserver-database-association": [{"accessDB":"accessDB"}],
+    "pse-account-association": [{"obtainPseAccount":"connectPseAccount"}],
+    "de-account-association": [{"obtainDEAccount":"connectDEAccount"}],
+    "ad-account-association": [{"obtainADLinuxAccount":"connectADLinuxAccount"}, {"obtainADWindowsAccount":"connectADWindowsAccount"}],
+    "appserver-iccp-association": [{"obtainAccessIccp": "gainInitialAccess"}],
+    "pcu-appserver-association": [{"controlThePCU": "gainInitialAccess"}],
+    "appserver-antivirus-association" : [{"accessAntivirus":"accessAntivirus"}],
+    "appserver-internal-association": [{"gainInitialAccess":"obtainDeviceSpecifics"}],
+    "unidirectionalgateway-dmzzone-association": [{"physicalAccessUSG":"allowWrongSecurityUpdatesUSG"}],
+    "unidirectionalgateway-prodzone-association": [{"physicalAccessUSG":"allowWrongSecurityUpdatesUSG"}],
+    "iccpzone-router-association": [{"transportLayerAttacks":"reconfigureRouter"}],
+    "firewall-router-association": [{"accessRouter":"reconfigureRouter"}],
+    "appserver-OracleDatabase-association": [{"accessDB":"accessDB"}],
+    "appserver-PostgreDatabase-association": [{"accessDB":"accessDB"}],
+    "appserver-RealTimeDatabase-association": [{"accessDB":"accessDB"}],
+    "pcu-rtu-association": [{"accessRTUFromField": "controlThePCU"}],
+    "backup-appserver-association": [{"obtainBackupServer": "obtainBackupData"}],
+    "server-activedirectory-association": [{"obtainDeviceSpecifics": "obtainAccessToServer"}],
+    "pcu-account-association": [{"accessPCU": "controlThePCU"}]
+  },
+  "attacksChain": {
+    "Alarm": {
+      "connectAlarm": ["startWrongAlarm", "bootWrongAlarm"]
+    },
+    "AppServer": {
+      "useDuquTool": ["obtainCentralMonitoring", "controlInformationRepository"],
+      "useFlameTool": ["gatherInformation"],
+      "gainInitialAccess": ["accessToCriticalProcess", "useDuquTool", "useFlameTool"],
+      "accessToCriticalProcess": ["connectAlarm", "accessProduct", "accessAntivirus", "accessDB", "obtainBackupServer"],
+      "accessProduct": [],
+      "connectAlarm":[],
+      "accessDB": [],
+      "accessAntivirus": [],
+      "obtainBackupServer": [],
+      "obtainDeviceSpecifics": ["gainInitialAccess"]
+    },
+    "WindowsServer": {
+      "obtainWindowsSpecifics": ["authenticateWindowsHost"]
+    },
+    "LinuxServer": {
+      "obtainLinuxSpecifics": ["authenticateLinuxHost"]
+    },
+    "RedhatServer": {
+      "obtainRedhatSpecifics": ["authenticateRedhatHost"]
+    },
+    "Firewall": {
+      "access": ["authenticate"],
+      "obtain": ["escalatePrivelege"],
+      "obtainWindowsSpecifics": ["backdoorWindows"],
+      "obtainRedhatSpecifics": ["backdoorLinux"],
+      "identifyTargetDeviceModel": ["identifyTargetDeviceModel"],
+      "bypassFirewallToDMZ": ["obtainAccessToDMZ"],
+      "bypassFirewallToProd": ["obtainAccessToProd"],
+      "obtainDeviceSpecifics": ["authenticateFirewall"],
+      "accessRouter":["reconfigureRouter"],
+      "accessToFirewall": []
+    },
+    "NextGenerationFirewall": {
+      "exploitVulnerableFunction": ["executeSystemCommandsWithRootPrivileges"]
+    },
+    "ActiveDirectory": {
+      "connectADLinuxAccount": ["authenticateADServer"],
+      "obtainADLinuxAccount": ["escalatePrivelege"],
+      "connectADWindowsAccount": ["authenticateADServer"],
+      "escalatePrivelege": ["obtainADWindowsAccount"],
+      "obtainADWindowsAccount": [],
+      "obtainDeviceSpecifics": ["authenticateADServer"],
+      "authenticateADServer": []
+    },
+    "BackupServer": {
+      "obtainBackupData": ["accessHistoryData"]
+    },
+    "DNSServer": {
+      "poisonDNS": ["redirectTrafficToAdversary", "captureCredentials"],
+      "obtainDeviceSpecifics": ["authenticateDNSServer"]
+    },
+    "NISServer": {
+      "obtainDeviceSpecifics": ["authenticateNISServer"],
+      "identifyTargetDeviceModel": ["escalatePrivelegeNISServer"]
+    },
+    "NTPServer": {
+      "obtainDeviceSpecifics": ["authenticateNTPServer"],
+      "identifyTargetDeviceModel": ["escalatePrivelegeNTPServer"],
+      "reconfigureAlarmClock": ["sendWrongAlarm"]
+    },
+    "Product": {
+      "uploadMaliciousProduct": ["gatherInfoAboutIndustrialProcess",
+        "studyUnderlyingLogic", "replaceDLLForReadingProjects"]
+    },
+    "OracleDatabase" : {
+      "accessDB": ["remoteListenerMemoryCorrupt"],
+      "remoteListenerMemoryCorrupt": ["authorise"]
+    },
+    "PostgreDatabase" : {
+      "accessDB": ["bypassInputValidation", "bypassBoundaryCheck"],
+      "bypassInputValidation": ["remoteDenialOfService"],
+      "bypassBoundaryCheck": ["overflowBuffer"],
+      "overflowBuffer": ["authorise"],
+      "remoteDenialOfService": ["authorise"]
+    },
+    "RealTimeDatabase" : {
+      "accessDB": ["authorise"]
+    },
+    "DataEngineeringServer": {
+      "accessDEAccount": ["authenticate"],
+      "obtainDEAccount": ["escalatePrivelege"]
+    },
+    "PseServer": {
+      "accessPseAccount": ["authenticate"],
+      "obtainPseAccount": ["escalatePrivelege"]
+    },
+    "HumanMachineInterface": {
+      "obtainAccessToServer": ["useLockerGoga", "connectAlarm", "accessSystemFiles"],
+      "accessSystemFiles": ["overwriteConfigFiles", "deleteSystemFiles"],
+      "overwriteConfigFiles": ["accessHardDrives", "accessNetworkDrives", "obtainABBPCM600"],
+      "deleteSystemFiles": ["unbootSystem"],
+      "useLockerGoga": ["lossOfView", "manipulateView"],
+      "manipulateView": ["evadeDetection", "inhibitProtectionFunctions"],
+      "connectAlarm": ["modifyAlarmSettings"],
+      "modifyAlarmSettings": ["preventDangerAlerts", "preventResponses"]
+    },
+    "Network": {
+      "sniffNetwork": ["sendUserCredentials", "analyseNetworkPackets"],
+      "replaceMaliciousBlock": ["takeControlOverProcesses"],
+      "gainInitialAccess": []
+    },
+    "ProdZone": {
+      "accessToDMZ": ["obtainHistoryData"],
+      "bypassFirewallToDMZ": ["obtainAccessToFirewall"],
+      "physicalShutdownDiod": ["obtainPhysicalAccessToDiod"],
+      "physicalAccessUSG": []
+    },
+    "DemilitarizedZone": {
+      "bypassFirewallToProd": ["obtainProductionDataFromFirewall"],
+      "physicalShutdownDiod": ["obtainProductionDataFromDiod"],
+      "physicalAccessUSG": [],
+      "accessToDMZ": []
+    },
+    "Zone": {
+      "bypassFirewall": ["accessAnotherZone"],
+      "physicalShutdownDiod": []
+    },
+    "IccpZone": {
+      "transportLayerAttacks": ["replayAttacks"]
+    },
+    "Diod": {
+     "physicalShutdownDiod": ["controlUniDirectionalNetwork"]
+    },
+    "Account": {
+      "guessPasswordAccount": ["accessAccount"],
+      "accessAccount": ["escalatePrilevelegeToAdmin"]
+    },
+    "DEAccount": {
+      "guessPasswordDEAccount": ["accessDEAccount"],
+      "obtainDEAccount": ["accessDEAccount"],
+      "connectDEAccount": []
+    },
+    "PSEAccount": {
+      "guessPasswordPseAccount": ["accessPseAccount"],
+      "obtainPseAccount": ["accessPseAccount"],
+      "connectPseAccount": []
+    },
+    "ADLinuxAccount": {
+      "guessPasswordADLinuxAccount": ["accessADLinuxAccount"],
+      "obtainADLinuxAccount": ["accessADLinuxAccount"],
+      "connectADLinuxAccount": []
+    },
+    "ADWindowsAccount": {
+      "guessPasswordADWindowsAccount": ["accessADWindowsAccount"],
+      "obtainADWindowsAccount": ["accessADWindowsAccount"],
+      "connectADWindowsAccount": []
+    },
+    "IccpServer": {
+      "obtainAccessIccp": ["getInsideIccp"]
+    },
+    "ProcessCommunicationUnit": {
+      "controlThePCU": ["shutdownThePower"],
+      "obtainAccessToServer": ["controlThePCU"]
+    },
+    "Antivirus": {
+      "controlAntivirus": ["shutdownAntivirus", "misconfigureMacAfee"],
+      "misconfigureMacAfee": [],
+      "accessAntivirus": ["controlAntivirus"]
+    },
+    "UnidirectionalGateway": {
+      "takeOverUSG": ["shutdownUSG"],
+      "allowWrongSecurityUpdatesUSG": ["reconfigureSecurityPropertiesUSG"]
+    },
+    "Router": {
+      "reconfigureRouter": ["allowInsecureTraffic"]
+    },
+    "ExternalScada": {
+      "accessExternalSCADA": []
+    },
+    "RemoteTerminalUnit": {
+      "accessRTUFromField": []
+    },
+    "PCUAccount": {
+      "accessPCU": ["obtainControlPCU"]
+    }
+  }
+}

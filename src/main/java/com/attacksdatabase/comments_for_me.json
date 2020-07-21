@@ -1,0 +1,166 @@
+{
+  "IccpServer": {
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  ICCPFE1",
+    "obtainValidAccount": "To learn more, please check documentation and refer to  ICCPFE2",
+    "remoteSystemDiscovery": "To learn more, please check documentation and refer to  ICCPFE3",
+    "remoteFileCopy": "To learn more, please check documentation and refer to  ICCPFE4",
+    "stealingPasswordsFromMemory": "To learn more, please check documentation and refer to  ICCPFE5",
+    "serverCompromise": "To learn more, please check documentation and refer to  ICCPFE6"
+  },
+  "RTUServer": {
+    "remoteSystemDiscovery": "To learn more, please check documentation and refer to  RTU1"
+  },
+  "PCUServer": {
+    "obtainValidAccount": "To learn more, please check documentation and refer to  PCU1",
+    "useDefaultCredentials": "To learn more, please check documentation and refer to  PCU2",
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  PCU3",
+    "serviceDiscovery": "To learn more, please check documentation and refer to  PCU4",
+    "administrativeAccessToPCU": "To learn more, please check documentation and refer to  PCU5",
+    "serviceStop": "To learn more, please check documentation and refer to  PCU6",
+    "shutDownPCU": "To learn more, please check documentation and refer to  PCU7",
+    "remoteSystemDiscovery": "To learn more, please check documentation and refer to  PCU8",
+    "remoteFileCopy": "To learn more, please check documentation and refer to  PCU9",
+    "stealingPasswordsFromMemory": "To learn more, please check documentation and refer to  PCU10",
+    "serverCompromise": "To learn more, please check documentation and refer to  PCU11"
+
+  },
+  "HumanMachineInterface": {
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  HMI1",
+    "obtainValidAccount": "To learn more, please check documentation and refer to  HMI2",
+    "manInTheMiddle": "To learn more, please check documentation and refer to  HMI3",
+    "modifyAlarmSettings": "To learn more, please check documentation and refer to  HMI4",
+    "administrativeAccessToHMI": "To learn more, please check documentation and refer to  HMI5",
+    "remoteSystemDiscovery": "To learn more, please check documentation and refer to  HMI6",
+    "placeRansomwareUsingLockerGoga": "To learn more, please check documentation and refer to  HMI7",
+    "serverCompromise": "To learn more, please check documentation and refer to  HMI8"
+  },
+  "Alarm": {
+    "unbootAlarm": "To learn more, please check documentation and refer to  AL1",
+    "startAlarm": "To learn more, please check documentation and refer to  AL2"
+  },
+  "AppServer": {
+    "obtainValidAccount": "To learn more, please check documentation and refer to  APS1",
+    "useDefaultCredentials": "To learn more, please check documentation and refer to  APS2",
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  APS3",
+    "serviceDiscovery": "To learn more, please check documentation and refer to  APS4",
+    "administrativeAccessToAppServer": "To learn more, please check documentation and refer to  APS5",
+    "serviceStop": "To learn more, please check documentation and refer to  APS6",
+    "remoteSystemDiscovery": "To learn more, please check documentation and refer to  APS7",
+    "installRogueMasterDevice": "To learn more, please check documentation and refer to  APS8",
+    "dataExfiltration": "To learn more, please check documentation and refer to  APS9",
+    "manInTheMiddle": "To learn more, please check documentation and refer to  APS10",
+    "masquerade": "To learn more, please check documentation and refer to  APS11",
+    "serverCompromise": "To learn more, please check documentation and refer to  APS12",
+    "collectData": "To learn more, please check documentation and refer to  APS13",
+    "dataCorruption": "To learn more, please check documentation and refer to  APS14",
+    "goToOtherSystemComponents": "To learn more, please check documentation and refer to  APS15",
+    "administrativeAccess": "To learn more, please check documentation and refer to  APS16"
+  },
+  "OracleDatabase": {
+    "bypassInputValidation": "To learn more, please check documentation and refer to  DB1",
+    "sqlInjection": "To learn more, please check documentation and refer to  DB2",
+    "commandLineExecuationThroughSQLInjection": "To learn more, please check documentation and refer to  DB3",
+    "dataExfiltration": "To learn more, please check documentation and refer to  DB4",
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  DB5",
+    "obtainValidAccount": "To learn more, please check documentation and refer to  DB6",
+    "administrativeAccessToDatabase": "To learn more, please check documentation and refer to  DB7",
+    "dataCorruption": "To learn more, please check documentation and refer to  DB8"
+  },
+  "PostgreDatabase": {
+    "bypassInputValidation": "To learn more, please check documentation and refer to  DB1",
+    "sqlInjection": "To learn more, please check documentation and refer to  DB2",
+    "commandLineExecuationThroughSQLInjection": "To learn more, please check documentation and refer to  DB3",
+    "dataExfiltration": "To learn more, please check documentation and refer to  DB4",
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  DB5",
+    "obtainValidAccount": "To learn more, please check documentation and refer to  DB6",
+    "administrativeAccessToDatabase": "To learn more, please check documentation and refer to  DB7",
+    "dataCorruption": "To learn more, please check documentation and refer to  DB8"
+  },
+  "RealTimeDatabase": {
+    "bypassInputValidation": "To learn more, please check documentation and refer to  DB1",
+    "sqlInjection": "To learn more, please check documentation and refer to  DB2",
+    "commandLineExecuationThroughSQLInjection": "To learn more, please check documentation and refer to  DB3",
+    "dataExfiltration": "To learn more, please check documentation and refer to  DB4",
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  DB5",
+    "obtainValidAccount": "To learn more, please check documentation and refer to  DB6",
+    "administrativeAccessToDatabase": "To learn more, please check documentation and refer to  DB7",
+    "dataCorruption": "To learn more, please check documentation and refer to  DB8"
+  },
+  "Antivirus": {
+    "obtainValidAccount": "To learn more, please check documentation and refer to  AV1",
+    "useDefaultCredentials": "To learn more, please check documentation and refer to  AV2",
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  AV3",
+    "serviceDiscovery": "To learn more, please check documentation and refer to  AV4",
+    "serviceStop": "To learn more, please check documentation and refer to  AV5",
+    "manInTheMiddle": "To learn more, please check documentation and refer to  AV6",
+    "modifyConfigurationOfAntivirusAgentsAndRepositories": "To learn more, please check documentation and refer to  AV7",
+    "remoteFileCopy": "To learn more, please check documentation and refer to  AV8",
+    "stealingPasswordsFromMemory": "To learn more, please check documentation and refer to  AV9",
+    "serverCompromise": "To learn more, please check documentation and refer to  AV10"
+  },
+  "BackupServer": {
+    "obtainValidAccount": "To learn more, please check documentation and refer to  BS1",
+    "useDefaultCredentials": "To learn more, please check documentation and refer to  BS2",
+    "accessBackupFilesToCollectInformation": "To learn more, please check documentation and refer to  BS3",
+    "administrativeAccessToBackupServer": "To learn more, please check documentation and refer to  BS4",
+    "dataExfiltration": "To learn more, please check documentation and refer to  BS5",
+    "serverCompromise": "To learn more, please check documentation and refer to  BS6"
+  },
+  "ActiveDirectory": {
+    "obtainADAdminAccount": "To learn more, please check documentation and refer to  AD1",
+    "remoteFileCopy": "To learn more, please check documentation and refer to  AD2",
+    "stealingPasswordsFromMemory": "To learn more, please check documentation and refer to  AD3",
+    "remoteSystemDiscovery": "To learn more, please check documentation and refer to  AD4"
+  },
+  "Product": {
+    "productInfection": "To learn more, please check documentation and refer to  PR1",
+    "productCorruption": "To learn more, please check documentation and refer to  PR2"
+  },
+  "DNSServer": {
+    "dnsPoisoning": "To learn more, please check documentation and refer to  DNS1",
+    "shutDownDNSServiceOnPort": "To learn more, please check documentation and refer to  DNS2"
+  },
+  "NTPServer": {
+    "serviceStop": "To learn more, please check documentation and refer to  NTP1",
+    "alterClockConfigurations": "To learn more, please check documentation and refer to  NTP2"
+  },
+  "DataEngineeringServer": {
+    "remoteFileCopy": "To learn more, please check documentation and refer to  DE1",
+    "stealingPasswordsFromMemory": "To learn more, please check documentation and refer to  DE2",
+    "obtainValidAccount": "To learn more, please check documentation and refer to  DE3",
+    "useDefaultCredentials": "To learn more, please check documentation and refer to  DE4",
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  DE5",
+    "serviceDiscovery": "To learn more, please check documentation and refer to  DE6",
+    "administrativeAccessToDEServer": "To learn more, please check documentation and refer to  DE7",
+    "dataExfiltration": "To learn more, please check documentation and refer to  DE8",
+    "serverCompromise": "To learn more, please check documentation and refer to  DE9"
+  },
+  "PSEServer": {
+    "remoteFileCopy": "To learn more, please check documentation and refer to  PSE1",
+    "stealingPasswordsFromMemory": "To learn more, please check documentation and refer to  PSE2",
+    "obtainValidAccount": "To learn more, please check documentation and refer to  PSE3",
+    "useDefaultCredentials": "To learn more, please check documentation and refer to  PSE4",
+    "accessingLogsToCollectInformation": "To learn more, please check documentation and refer to  PSE5",
+    "serviceDiscovery": "To learn more, please check documentation and refer to  PSE6",
+    "administrativeAccessToPSEServer": "To learn more, please check documentation and refer to  PSE7",
+    "dataExfiltration": "To learn more, please check documentation and refer to  PSE8",
+    "serverCompromise": "To learn more, please check documentation and refer to  PSE9"
+  },
+  "UserAccount": {
+    "bruteForce": "To learn more, please check documentation and refer to  AC1",
+    "phishSCADAEngineer": "To learn more, please check documentation and refer to  AC2",
+    "bribeSCADAEngineer": "To learn more, please check documentation and refer to  AC3"
+  },
+  "AdminAccount": {
+    "bruteForce": "To learn more, please check documentation and refer to  AC1",
+    "phishSCADAEngineer": "To learn more, please check documentation and refer to  AC2",
+    "bribeSCADAEngineer": "To learn more, please check documentation and refer to  AC3"
+  },
+  "ServiceAccount": {
+    "bruteForce": "To learn more, please check documentation and refer to  SAC1",
+    "bribeSCADAEngineer": "To learn more, please check documentation and refer to  SAC2"
+  },
+  "Firewall": {
+    "bypassFirewall": "To learn more, please check documentation and refer to  FW1"
+  }
+}

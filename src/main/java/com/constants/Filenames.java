@@ -1,0 +1,40 @@
+package com.constants;
+
+public class Filenames {
+    public final static String pathToServerRmt = "C:\\Users\\SEAKDUI\\Documents\\servers.rmt";
+    public final static String pathToServerRmtYaml = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\src\\main\\mal\\serverrmt.yml";
+    //public final static String pathToConfdb = "C:\\Users\\SEAKDUI\\Documents\\confdb";
+    //public final static String pathToConfdbOracle= "C:\\Users\\SEAKDUI\\Documents\\confdb_oracle";
+    public final static String pathToConfdbPostgre= "C:\\Users\\SEAKDUI\\Documents\\confdb_postgre";
+    //public final static String pathToConfdbPlatform = "C:\\Users\\SEAKDUI\\Documents\\nmt.confdb";
+    public final static String pathToConfdbJsonFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\confdbtojson.json";
+    public final static String pathToAppserversMalFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\appservers.mal";
+    //public final static String pathToSuggestedMalFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\suggested.mal";
+    public final static String pathToDatabasesMalFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\databases.mal";
+    public final static String pathToSoftwaresMalFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\softwares.mal";
+    //public final static String pathToEquipmentMalFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\equipment.mal";
+    public final static String pathToAccountsMalFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\accounts.mal";
+    public final static String pathToCommunicationMalFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\communication.mal";
+    public final static String pathToScadaLangMal =  "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\scadalang.mal";
+    public final static String pathToCoreMal =  "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\src\\main\\mal\\coreLang.mal";
+    public final static String pathToAttacksFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\graphical-scada-lang\\src\\main\\java\\com\\attacksdatabase\\attackNames.json";
+    public final static String pathToZonesFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\graphical-scada-lang\\src\\main\\java\\com\\attacksdatabase\\zones.json";
+    public final static String pathToExistsFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\graphical-scada-lang\\src\\main\\java\\com\\attacksdatabase\\additional_exists_attacks.json";
+    public final static String pathToCommentsFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\graphical-scada-lang\\src\\main\\java\\com\\attacksdatabase\\comments_for_me.json";
+    public final static String pathToCVSSFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\graphical-scada-lang\\src\\main\\java\\com\\attacksdatabase\\cvssNew.json";
+    public final static String pathToCoreLangAssociationsFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\graphical-scada-lang\\src\\main\\java\\com\\attacksdatabase\\coreLangAssociations.json";
+    public final static String pathToProtectionFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\graphical-scada-lang\\src\\main\\java\\com\\attacksdatabase\\protectionsNew.json";
+    public final static String pathToRisksFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\graphical-scada-lang\\src\\main\\java\\com\\attacksdatabase\\risks.json";
+    public final static String pathToJarFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\target\\";
+    public final static String workingDirToExecuteMvnCmd = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\SCADAMalPackaging\\";
+    public final static String pathToOldMALCompilerMainFile = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\MAL-0.0.3-4\\target\\classes\\se\\kth\\mal\\Master";
+    public final static String pathToOldMALCompiler = "C:\\Users\\SEAKDUI\\Documents\\NM-Threat-Modelling\\MAL-0.0.3-4\\target\\mal-compiler-0.0.3-SNAPSHOT-jar-with-dependencies.jar";
+    public final static String nameAppserversMalFile = "appservers.mal";
+    public final static String nameDatabaseMalFile = "databases.mal";
+    public final static String nameAccountsMalFile = "accounts.mal";
+    public final static String nameCommunicationMalFile = "communication.mal";
+    public final static String nameCoreMalFile = "coreLang.mal";
+    public final static String nameSoftwaresMalFile = "softwares.mal";
+    //public final static String nameEquipmentMalFile = "equipment.mal";
+    //public final static String nameSuggestedMalFile = "suggested.mal";
+}

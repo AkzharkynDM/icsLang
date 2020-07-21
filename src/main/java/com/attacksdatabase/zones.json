@@ -1,0 +1,54 @@
+{
+  "fields": {
+    "PROD": "ProductionZone",
+    "DMZ": "DemilitarizedZone",
+    "MAN": "ManagementZone",
+    "ICCP": "IccpZone",
+    "CTRL": "ControlZone",
+    "DB": "DatabaseZone",
+    "QA": "QualityAssuranceZone",
+    "TRA": "TrafficZone",
+    "WS": "WorkstationZone",
+    "SUP": "SupervisionZone",
+    "GLOB": "GlobalZone"
+  },
+  "assets": {
+    "ProductionZone": "",
+    "DemilitarizedZone": "",
+    "ManagementZone": "",
+    "IccpZone": "",
+    "ControlZone": "",
+    "DatabaseZone": "",
+    "QualityAssuranceZone": "",
+    "TrafficZone": "",
+    "WorkstationZone": "",
+    "SupervisionZone": "",
+    "GlobalZone": ""
+  },
+  "tags": {
+    "ProductionZone": "ProdZone",
+    "DemilitarizedZone": "DemilitarizedZone",
+    "ManagementZone": "Zone",
+    "IccpZone": "IccpZone",
+    "ControlZone": "Zone",
+    "DatabaseZone": "Zone",
+    "QualityAssuranceZone": "Zone",
+    "TrafficZone": "Zone",
+    "WorkstationZone": "Zone",
+    "SupervisionZone": "Zone",
+    "GlobalZone": "Zone"
+  },
+  "firewalls": {
+    "PROD": "ProdZoneFirewall",
+    "DMZ": "DmzFirewall",
+    "MAN": "ManZoneFirewall",
+    "ICCP": "IccpZoneFirewall",
+    "CTRL": "CtrlZoneFirewall",
+    "DB": "DbZoneFirewall",
+    "QA": "QaZoneFirewall",
+    "TRA": "TraZoneFirewall",
+    "WS": "WsZoneFirewall",
+    "SUP": "SupZoneFirewall",
+    "GLOB": "GlobFirewall"
+  }
+}

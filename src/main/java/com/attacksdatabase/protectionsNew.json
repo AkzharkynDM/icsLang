@@ -1,0 +1,129 @@
+{
+  "IccpServer": {
+    "hardenProfile": [
+      "stealingPasswordsFromMemory"
+    ],
+    "intrusionDetectionSystem": [
+      "remoteSystemDiscovery"
+    ]
+  },
+  "ProcessCommunicationUnit": {
+    "onDemandAccount": [
+      "administrativeAccessToPCU"]
+  },
+  "BackupServer": {
+    "encryptStorageData": [
+      "administrativeAccessToBackupServer"
+    ]
+  },
+  "AntivirusServer": {
+    "onDemandAccount": [
+      "modifyConfigurationOfAntivirusAgentsAndRepositories"
+     ],
+    "hardenProfile": [
+      "useDefaultCredentials",
+      "stealingPasswordsFromMemory"
+    ]
+  },
+  "AppServer": {
+    "onDemandAccount": [
+      "administrativeAccessToAppServer"],
+    "networkSegregation": [
+      "manInTheMiddle"],
+    "logsDataEncryption": [
+      "accessingLogsToCollectInformation"]
+  },
+  "Account": {
+    "multifactorAuthentications": [
+      "phishSCADAEngineer",
+      "obtainValidAccount",
+      "obtainADAdminAccount",
+      "modifyAlarmSettings",
+      "bruteForce"
+    ]
+  },
+  "Product": {
+    "applyApplicationSecurityGuidelines": [
+      "productInfection",
+      "productCorruption"
+    ]
+  },
+  "OracleDatabase": {
+    "sanitizeClientSideInput": [
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection",
+      "bypassInputValidation"
+    ],
+    "validateClientSideInput": [
+      "bypassInputValidation"
+    ],
+    "usePreparedStatement": [
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection"
+    ],
+    "onDemandAccount": [
+      "administrativeAccessToDatabase"
+    ]
+  },
+  "PostgreDatabase": {
+    "sanitizeClientSideInput": [
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection",
+      "bypassInputValidation"
+    ],
+    "validateClientSideInput": [
+      "bypassInputValidation"
+    ],
+    "usePreparedStatement": [
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection"
+    ],
+    "onDemandAccount": [
+      "administrativeAccessToDatabase"
+    ]
+  },
+  "RealtimeDatabase": {
+    "sanitizeClientSideInput": [
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection",
+      "bypassInputValidation"
+    ],
+    "validateClientSideInput": [
+      "bypassInputValidation"
+    ],
+    "usePreparedStatement": [
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection"
+    ],
+    "onDemandAccount": [
+      "administrativeAccessToDatabase"
+    ]
+  },
+  "ServiceAccount": {
+    "useStrongPassword": [
+      "bruteForce"
+    ]
+  },
+  "HumanMachineInterface": {
+    "hardenProfile": [
+      "placeRansomwareUsingLockerGoga"
+    ],
+    "intrusionDetectionSystem": [
+      "remoteSystemDiscovery",
+      "manInTheMiddle"],
+    "scheduleBackup": [
+      "placeRansomwareUsingLockerGoga"],
+    "malwareDetectionAndAntivirus": [
+      "placeRansomwareUsingLockerGoga"],
+    "onDemandAccount": [
+      "administrativeAccessToHMI"]
+  },
+  "DataEngineeringServer": {
+    "whitelistHosts": [
+      "serviceDiscovery"
+    ],
+    "onDemandAccount": [
+      "administrativeAccessToDEServer"
+    ]
+  }
+}

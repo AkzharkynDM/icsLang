@@ -1,0 +1,20 @@
+{
+  "uploadMaliciousProduct": 1.5,
+  "gatherInfoAboutIndustrialProcess": 4.5,
+  "studyUnderlyingLogic": 3.5,
+  "accessToProd": 2.0,
+  "accessToDMZ": 3.0,
+  "accessToFirewall": 3.5,
+  "guessPasswordAccount": 1.5,
+  "physicalShutdownDiod": 4.0,
+  "controlUniDirectionalNetwork": 4.0,
+  "bypassFirewallToDMZ": 1.0,
+  "bypassFirewallToProd":1.5,
+  "reconfigureSecurityPropertiesUSG": 5.0,
+  "allowWrongSecurityUpdatesUSG": 5.0,
+  "takeOverUSG": 5.0,
+  "shutdownUSG": 5.0,
+  "transportLayerAttacks": 2.0,
+  "reconfigureRouter": 3.0,
+  "obtainAccessIccp": 5.0
+}

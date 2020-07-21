@@ -1,0 +1,464 @@
+{"assetsAttackTags": {
+  "iccpserver": ["IccpServer"],
+  "rtu": ["RTU"],
+  "pcu": ["PCU"],
+  "MMI": ["HMI"],
+  "alarm": ["Alarm"],
+  "appServer": ["MasterStation", "Historian"],
+  "Oracle": ["Oracle"],
+  "Postgre": ["Postgre"],
+  "Avanti": ["Avanti"],
+  "antivirus": ["MacAfee"],
+  "backup_server": ["HP_DP_BACKUP"],
+  "AD": ["AD"],
+  "product": ["Program"],
+  "DNS": ["DNS"],
+  "NIS": ["NIS"],
+  "NTP": ["NTP"],
+  "PseServer": ["PSE"],
+  "DataEngineeringServer": ["DE"],
+  "user": ["Account"],
+  "Account": ["Account"],
+  "ServiceAccount": ["ServiceAccount"],
+  "Firewall": ["CiscoFirewall"],
+  "DEAccount": ["DEAccount"],
+  "PSEAccount": ["PSEAccount"],
+  "ADLinuxAccount": ["ADLinuxAccount"],
+  "ADWindowsAccount": ["ADWindowsAccount"],
+  "Diod": ["DataDiode"],
+  "NGFW":["FortiGate"],
+  "UnidirectionalGateway": ["UnidirectionalGateway"],
+  "router": ["Router"],
+  "externalSCADA": ["ExternalSCADA"],
+  "Zone": ["Zone"],
+  "accessServer": [],
+  "PCUAccount": ["PCUAccount"],
+  "network": ["Telnet", "WIFI", "DialupModem", "Profibus"],
+  "ProdZone":["ProdZone"],
+  "IccpZone": ["IccpZone"],
+  "DemilitarizedZone": ["DemilitarizedZone"],
+  "Network": ["InternalNetwork"],
+  "host": ["Host"],
+  "WindowsHost": ["Windows"],
+  "LinuxHost": ["Linux"],
+  "RedhatHost": ["Redhat"],
+  "password": ["ShortPassword", "WeakPassword"]
+},
+  "attacks": {
+    "IccpServer": [
+      "serverCompromise",
+      "accessingLogsToCollectInformation",
+      "obtainValidAccount",
+      "remoteSystemDiscovery",
+      "remoteFileCopy",
+      "stealingPasswordsFromMemory"],
+    "RTU": ["remoteSystemDiscovery"],
+    "PCU": ["serverCompromise",
+      "obtainValidAccount",
+      "useDefaultCredentials",
+      "accessingLogsToCollectInformation",
+      "serviceDiscovery",
+      "administrativeAccessToPCU",
+      "serviceStop",
+      "shutDownPCU",
+      "remoteSystemDiscovery",
+      "remoteFileCopy",
+      "stealingPasswordsFromMemory"
+    ],
+    "HMI": ["serverCompromise",
+      "accessingLogsToCollectInformation",
+      "obtainValidAccount",
+      "manInTheMiddle",
+      "modifyAlarmSettings",
+      "administrativeAccessToHMI",
+      "remoteSystemDiscovery",
+      "placeRansomwareUsingLockerGoga"
+    ],
+    "Alarm" : ["unbootAlarm",
+      "startAlarm"],
+    "MasterStation": ["serverCompromise",
+      "obtainValidAccount",
+      "useDefaultCredentials",
+      "accessingLogsToCollectInformation",
+      "serviceDiscovery",
+      "administrativeAccessToAppServer",
+      "serviceStop",
+      "remoteSystemDiscovery",
+      "installRogueMasterDevice",
+      "dataExfiltration",
+      "manInTheMiddle",
+      "masquerade"
+    ],
+    "Historian": [],
+    "Oracle": ["bypassInputValidation",
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection",
+      "dataExfiltration",
+      "accessingLogsToCollectInformation",
+      "obtainValidAccount",
+      "administrativeAccessToDatabase",
+      "dataCorruption"
+    ],
+    "Postgre": ["bypassInputValidation",
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection",
+      "dataExfiltration",
+      "accessingLogsToCollectInformation",
+      "obtainValidAccount",
+      "administrativeAccessToDatabase",
+      "dataCorruption"],
+    "Avanti": ["bypassInputValidation",
+      "sqlInjection",
+      "commandLineExecuationThroughSQLInjection",
+      "dataExfiltration",
+      "accessingLogsToCollectInformation",
+      "obtainValidAccount",
+      "administrativeAccessToDatabase",
+      "dataCorruption"],
+    "MacAfee": ["serverCompromise",
+      "obtainValidAccount",
+      "useDefaultCredentials",
+      "accessingLogsToCollectInformation",
+      "serviceDiscovery",
+      "serviceStop",
+      "manInTheMiddle",
+      "modifyConfigurationOfAntivirusAgentsAndRepositories",
+      "remoteFileCopy",
+      "stealingPasswordsFromMemory"
+    ],
+    "HP_DP_BACKUP": ["serverCompromise",
+      "obtainValidAccount",
+      "useDefaultCredentials",
+      "accessBackupFilesToCollectInformation",
+      "administrativeAccessToBackupServer",
+      "dataExfiltration"
+    ],
+    "AD": ["serverCompromise"
+    ],
+    "Program": ["productInfection",
+      "productCorruption"
+    ],
+    "DNS": ["serverCompromise", "remoteSystemDiscovery"],
+    "NTP": ["serverCompromise", "remoteSystemDiscovery"],
+    "NIS": ["serverCompromise", "remoteSystemDiscovery"],
+    "DE": ["serverCompromise",
+      "remoteFileCopy",
+      "stealingPasswordsFromMemory",
+      "obtainValidAccount",
+      "useDefaultCredentials",
+      "accessingLogsToCollectInformation",
+      "serviceDiscovery",
+      "administrativeAccessToDEServer",
+      "dataExfiltration"
+    ],
+    "PSE": ["serverCompromise",
+      "remoteFileCopy",
+      "stealingPasswordsFromMemory",
+      "obtainValidAccount",
+      "useDefaultCredentials",
+      "accessingLogsToCollectInformation",
+      "serviceDiscovery",
+      "administrativeAccessToPSEServer",
+      "dataExfiltration"
+    ],
+    "AdminAccount": [
+      "bruteForce"
+    ],
+    "UserAccount": ["bruteForce",
+      "phishSCADAEngineer",
+      "bribeSCADAEngineer"
+    ],
+    "ServiceAccount": [
+      "bruteForce",
+      "bribeSCADAEngineer"
+    ],
+
+
+    "ADLinuxAccount": ["bruteForce",
+      "phishSCADAEngineer",
+      "bribeSCADAEngineer"
+    ],
+    "ADWindowsAccount": ["bruteForce",
+      "phishSCADAEngineer",
+      "bribeSCADAEngineer"
+    ],
+    "DEAccount": [
+      "bruteForce",
+      "bribeSCADAEngineer"
+    ],
+    "PSEAccount": [
+      "bruteForce",
+      "bribeSCADAEngineer"
+    ],
+    "PCUAccount": ["bruteForce",
+      "phishSCADAEngineer",
+      "bribeSCADAEngineer"
+    ],
+    "Host": ["serverCompromise"
+    ],
+    "Windows": ["obtainValidAccount",
+      "useDefaultCredentials",
+      "accessingLogsToCollectInformation",
+      "serviceDiscovery",
+      "remoteSystemDiscovery",
+      "remoteFileCopy",
+      "stealingPasswordsFromMemory"
+    ],
+    "Linux": [
+      "accessingLogsToCollectInformation",
+      "obtainValidAccount"
+    ],
+    "Redhat": [
+      "accessingLogsToCollectInformation",
+      "obtainValidAccount"
+    ],
+    "Telnet": ["sniffNetwork"],
+    "WIFI": ["wifiCracking"],
+    "DialupModem": [],
+    "InternalNetwork": ["gainInitialAccess"],
+    "Profibus": ["replaceMaliciousBlock"],
+    "ShortPassword": ["guessPassword"],
+    "WeakPassword": ["guessPassword"],
+    "DemilitarizedZone": ["gainInitialAccess", "physicalShutdownDiod"],
+    "IccpZone": ["gainInitialAccess"],
+    "ProdZone": ["gainInitialAccess", "bypassFirewall"],
+    "Zone": ["gainInitialAccess"],
+    "CiscoFirewall": ["bypassFirewall"],
+    "DataDiode": ["physicalShutdownDiod"],
+    "FortiGate": ["exploitVulnerableFunction"],
+    "UnidirectionalGateway": ["allowWrongSecurityUpdatesUSG", "takeOverUSG"],
+    "Router": ["reconfigureRouter"],
+    "ExternalSCADA":["accessExternalSCADA"]
+  },
+  "potentialAttacksInAssociation": {
+    "appserver-iccp-association": [{"remoteSystemDiscovery": "serverCompromise"}],
+    "pcu-rtu-association": [{"serverCompromise":"remoteSystemDiscovery"}],
+    "pcu-appserver-association": [{"remoteSystemDiscovery": "serverCompromise"}],
+    "mmi-appserver-association": [{"remoteSystemDiscovery":"serverCompromise"}],
+    "alarm-appserver-association": [{"manInTheMiddle":"startAlarm"}, {"manInTheMiddle": "unbootAlarm"}],
+    "alarm-mmi-association" : [{"manInTheMiddle":"startAlarm"}, {"manInTheMiddle": "unbootAlarm"}],
+    "appserver-OracleDatabase-association": [{"remoteSystemDiscovery":"bypassInputValidation"}],
+    "appserver-PostgreDatabase-association": [{"remoteSystemDiscovery":"bypassInputValidation"}],
+    "appserver-RealTimeDatabase-association": [{"remoteSystemDiscovery":"bypassInputValidation"}],
+    "appserver-database-association": [{"remoteSystemDiscovery":"bypassInputValidation"}],
+    "appserver-antivirus-association" : [{"remoteSystemDiscovery":"serverCompromise"}],
+    "backup-appserver-association": [{"remoteSystemDiscovery":"serverCompromise"}],
+    "appserver-product-association": [{"remoteSystemDiscovery":"productInfection"}, {"remoteSystemDiscovery":"productCorruption"}],
+    "analysisServer-product-association": [{"remoteSystemDiscovery":"productInfection"}, {"remoteSystemDiscovery":"productCorruption"}],
+    "host-network-association": [{"gainInitialAccess":"remoteSystemDiscovery"}, {"gainInitialAccess": "serverCompromise"}],
+    "user-mmi-association": [{"remoteSystemDiscovery":"bruteForce"}, {"remoteSystemDiscovery":"bribingSCADAEngineer"}],
+    "user-appserver-association": [{"remoteSystemDiscovery":"bruteForce"}, {"remoteSystemDiscovery":"bribingSCADAEngineer"}],
+    "pse-account-association": [{"remoteSystemDiscovery":"bruteForce"}, {"remoteSystemDiscovery":"bribingSCADAEngineer"}],
+    "de-account-association": [{"remoteSystemDiscovery":"bruteForce"}, {"remoteSystemDiscovery":"bribingSCADAEngineer"}],
+    "pcu-account-association": [{"remoteSystemDiscovery":"bruteForce"}, {"remoteSystemDiscovery":"bribingSCADAEngineer"}],
+    "ad-account-association": [{"remoteSystemDiscovery":"bruteForce"}, {"remoteSystemDiscovery":"bribingSCADAEngineer"}],
+    "server-activedirectory-association": [{"remoteSystemDiscovery":"serverCompromise"}],
+    "appserver-internal-association": [{"remoteSystemDiscovery":"bypassFirewall"},
+      {"remoteSystemDiscovery":"gainInitialAccess"},
+      {"remoteSystemDiscovery":"serverCompromise"}],
+    "iccpzone-router-association": [{"gainInitialAccess":"reconfigureRouter"}],
+    "firewall-router-association": [{"accessRouter":"reconfigureRouter"}, {"reconfigureRouter": "accessRouter"}],
+    "firewall-zone-association": [{"bypassFirewall":"bypassFirewall"}],
+    "prodzone-firewall-association": [{"bypassFirewall":"bypassFirewall"}],
+    "dmz-firewall-association": [{"bypassFirewall":"bypassFirewall"}],
+    "diod-prodzone-association": [{"physicalShutdownDiod":"physicalShutdownDiod"}],
+    "diod-dmzzone-association": [{"physicalShutdownDiod":"physicalShutdownDiod"}],
+
+    "unidirectionalgateway-dmzzone-association": [{"physicalAccessUSG":"allowWrongSecurityUpdatesUSG"}],
+    "unidirectionalgateway-prodzone-association": [{"physicalAccessUSG":"allowWrongSecurityUpdatesUSG"}]
+  },
+  "attacksChain": {
+    "AdminAccount": {
+      "bruteForce": []
+    },
+    "ActiveDirectory": {
+      "serverCompromise": ["obtainPasswordFromMemory", "accessLogs", "remoteSystemDiscovery"],
+      "obtainPasswordFromMemory": ["obtainValidAccount"],
+      "accessLogs": ["obtainValidAccount"]
+    },
+    "Alarm": {
+      "unbootAlarm": [],
+      "startAlarm": []
+    },
+    "Antivirus": {
+      "serverCompromise": ["remoteFileCopy", "useDefaultCredentials", "accessLogs", "remoteSystemDiscovery"],
+      "remoteFileCopy": ["obtainPasswordFromMemory"],
+      "obtainPasswordFromMemory": ["obtainValidAccount"],
+      "accessLogs": ["obtainValidAccount", "serviceDiscovery"],
+      "useDefaultCredentials": ["administrativeAccess", "serviceStop"],
+      "serviceDiscovery": ["manInTheMiddle", "serviceStop"],
+      "administrativeAccess": ["modifyAntivirusConfiguration", "manInTheMiddle"],
+      "modifyAntivirusConfiguration": ["disruptionOfAvailability", "stopOperationOfAntivirusServer"]
+    },
+    "AppServer": {
+      "serverCompromise": ["useDefaultCredentials", "accessLogs", "remoteSystemDiscovery"],
+      "accessLogs": ["obtainValidAccount", "serviceDiscovery"],
+      "useDefaultCredentials": ["administrativeAccess", "serviceStop"],
+      "serviceDiscovery": ["serviceStop", "manInTheMiddle"],
+      "obtainValidAccount": ["administrativeAccess", "dataExfiltration"],
+      "administrativeAccess": ["dataExfiltration", "manInTheMiddle", "masquerading", "installRogueMasterDevice"],
+      "manInTheMiddle": ["goToOtherSystemComponents"],
+      "dataExfiltration": ["dataCorruption"],
+      "installRogueMasterDevice": ["collectData"]
+    },
+    "BackupServer": {
+      "serverCompromise": ["accessBackupFiles", "useDefaultCredentials"],
+      "accessBackupFiles": ["obtainValidAccount"],
+      "useDefaultCredentials": ["administrativeAccess"],
+      "obtainValidAccount": ["administrativeAccess", "dataExfiltration"],
+      "administrativeAccess": ["dataExfiltration"]
+    },
+    "DataEngineeringServer": {
+      "serverCompromise": ["remoteFileCopy", "accessLogs", "useDefaultCredentials"],
+      "remoteFileCopy": ["obtainPasswordFromMemory"],
+      "obtainPasswordFromMemory": ["obtainValidAccount"],
+      "useDefaultCredentials": ["administrativeAccess"],
+      "accessLogs": ["obtainValidAccount"],
+      "obtainValidAccount": ["administrativeAccess"],
+      "administrativeAccess": ["dataExfiltration", "dataCorruption"]
+    },
+    "DNSServer": {
+      "remoteSystemDiscovery": ["serverCompromise"],
+      "serverCompromise": ["poisonDNS", "shutdownDNSService"],
+      "dnsPoisoning": [],
+      "shutDownDNSServiceOnPort": []
+    },
+    "Firewall": {
+      "bypassFirewall": ["accessRouter"]
+    },
+    "HumanMachineInterface": {
+      "manInTheMiddle": ["remoteSystemDiscovery", "modifyAlarmSettings"],
+      "accessLogs": ["obtainValidAccount"],
+      "obtainValidAccount": ["modifyAlarmSettings", "administrativeAccess"],
+      "administrativeAccess": ["placeRansomware"],
+      "placeRansomware": ["dataCorruption"]
+    },
+    "IccpServer": {
+      "serverCompromise": ["remoteFileCopy", "accessLogs", "remoteSystemDiscovery"],
+      "remoteFileCopy": ["obtainPasswordFromMemory"],
+      "obtainPasswordFromMemory": ["obtainValidAccount"],
+      "accessLogs": ["obtainValidAccount"],
+      "remoteSystemDiscovery": ["goToOtherSystemComponents"],
+      "obtainValidAccount": ["goToOtherSystemComponents"]
+    },
+    "NISServer": {
+      "remoteSystemDiscovery": ["serverCompromise"],
+      "serverCompromise": []
+    },
+    "NTPServer": {
+      "remoteSystemDiscovery": ["serverCompromise"],
+      "serverCompromise": ["stopService", "alterClockConfigurations"],
+      "stopService": [],
+      "alterClockConfigurations": []
+    },
+    "OracleDatabase" : {
+      "bypassInputValidation": ["sqlInjection"],
+      "sqlInjection": ["commandExecution", "dataCorruption", "dataExfiltration"],
+      "commandExecution": ["accessLogs", "dataExfiltration"],
+      "accessLogs": ["obtainValidAccount"],
+      "obtainValidAccount": ["administrativeAccess"],
+      "administrativeAccess": ["dataExfiltration", "dataCorruption"]
+    },
+    "PostgreDatabase" : {
+      "bypassInputValidation": ["sqlInjection"],
+      "sqlInjection": ["commandExecution", "dataCorruption", "dataExfiltration"],
+      "commandExecution": ["accessLogs", "dataExfiltration"],
+      "accessLogs": ["obtainValidAccount"],
+      "obtainValidAccount": ["administrativeAccess"],
+      "administrativeAccess": ["dataExfiltration", "dataCorruption"]
+    },
+    "Product": {
+      "productInfection": [],
+      "productCorruption": []
+    },
+    "ProcessCommunicationUnit": {
+      "serverCompromise": ["remoteFileCopy", "useDefaultCredentials", "accessLogs", "remoteSystemDiscovery"],
+      "remoteFileCopy": ["obtainPasswordFromMemory"],
+      "obtainPasswordFromMemory": ["obtainValidAccount"],
+      "accessLogs": ["obtainValidAccount", "serviceDiscovery"],
+      "useDefaultCredentials": ["administrativeAccess", "serviceStop"],
+      "serviceDiscovery": ["serviceStop"],
+      "administrativeAccess": ["shutdownPCU"]
+    },
+    "PseServer": {
+      "serverCompromise": ["remoteFileCopy", "accessLogs", "useDefaultCredentials"],
+      "remoteFileCopy": ["obtainPasswordFromMemory"],
+      "obtainPasswordFromMemory": ["obtainValidAccount"],
+      "useDefaultCredentials": ["administrativeAccess"],
+      "accessLogs": ["obtainValidAccount"],
+      "obtainValidAccount": ["administrativeAccess"],
+      "administrativeAccess": ["dataExfiltration", "dataCorruption"]
+    },
+    "RealTimeDatabase" : {
+      "bypassInputValidation": ["sqlInjection"],
+      "sqlInjection": ["commandExecution", "dataCorruption", "dataExfiltration"],
+      "commandExecution": ["accessLogs", "dataExfiltration"],
+      "accessLogs": ["obtainValidAccount"],
+      "obtainValidAccount": ["administrativeAccess"],
+      "administrativeAccess": ["dataExfiltration", "dataCorruption"]
+    },
+    "RemoteTerminalUnit": {
+      "serverCompromise":["remoteSystemDiscovery"]
+    },
+    "ServiceAccount": {
+      "bruteForce": [],
+      "bribingSCADAEngineer": []
+    },
+    "UserAccount": {
+      "bruteForce": [],
+      "phishingSCADAEngineer": [],
+      "bribingSCADAEngineer": []
+    },
+
+
+    "ExternalScada": {
+
+    },
+    "DemilitarizedZone": {
+      "gainInitialAccess": ["accessToDMZ", "bypassFirewall"],
+      "bypassDiodToDMZ": ["physicalShutdownDiod"],
+      "accessToDMZ": ["bypassFirewallToDMZ", "bypassDiodToDMZ"],
+      "physicalShutdownDiod": []
+    },
+    "Diod": {
+    },
+    "IccpZone": {
+      "gainInitialAccess": ["accessToICCP", "transportLayerAttacks"]
+    },
+    "NextGenerationFirewall": {
+    },
+    "ProdZone": {
+      "gainInitialAccess": ["accessToProd", "physicalShutdownDiod"],
+      "accessToProd": ["bypassDiodToProd", "bypassFirewall"]
+    },
+    "Router": {
+    },
+    "UnidirectionalGateway": {
+    },
+    "Zone": {
+      "gainInitialAccess": ["bypassFirewall", "physicalShutdownDiod"]
+    },
+
+
+    "ADLinuxAccount": {
+    },
+    "ADWindowsAccount": {
+    },
+    "DEAccount": {
+    },
+    "Host": {
+    },
+    "LinuxServer": {
+    },
+    "Network": {
+    },
+    "PSEAccount": {
+    },
+    "PCUAccount": {
+    },
+    "RedhatServer": {
+    },
+    "WindowsServer": {
+    }
+  }
+}

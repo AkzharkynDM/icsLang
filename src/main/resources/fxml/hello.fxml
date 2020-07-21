@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import org.tbee.javafx.scene.layout.fxml.MigPane?>
+<?import javafx.collections.*?>
+
+<MigPane id="rootPane" fx:controller="com.visualapp.FileCreatorController"
+        styleClass="main-panel"
+        layout="insets 20"
+        cols="[label, pref!][grow, 50::]"
+        rows=""
+        xmlns:fx="http://javafx.com/fxml">
+
+    <Label text="Additional component to add to the model:" styleClass="hello-message" MigPane.cc="span, growx, gaptop 15"/>
+    <ListView fx:id="listView" onMouseClicked="#selectMultipleThreatModels" styleClass="hello-message" MigPane.cc="span, growx, gaptop 15" >
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Blocked or delayed flow of information through ICS networks, which could disrupt ICS operation"/>
+                <String fx:value="Unauthorized changes to instructions, commands, or alarm thresholds, which could damage, disable, or shut down equipment, create environmental impacts, and/or endanger human life" />
+                <String fx:value="Inaccurate information sent to system operators, either to disguise unauthorized changes, or to cause the operators to initiate inappropriate actions, which could have broad negative effects" />
+                <String fx:value="ICS software or configuration settings modified, or ICS software infected with malware, which could have broad negative effects" />
+                <String fx:value="ICS data in database" />
+            </FXCollections>
+        </items>
+    </ListView>
+
+    <ListView fx:id="listViewSuggestedAssets1" visible="false" onMouseClicked="#selectMultipleSuggestedAssets1" styleClass="hello-message" MigPane.cc="span, growx, gaptop 15" >
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Diod" />
+                <String fx:value="NextGenerationFirewall"/>
+            </FXCollections>
+        </items>
+    </ListView>
+
+    <ListView fx:id="listViewSuggestedAssets2" visible="false" onMouseClicked="#selectMultipleSuggestedAssets2" styleClass="hello-message" MigPane.cc="span, growx, gaptop 15" >
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="PSE" />
+                <String fx:value="Third-party software" />
+            </FXCollections>
+        </items>
+    </ListView>
+
+    <fx:script>
+        listView.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
+        listViewSuggestedAssets1.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
+        listViewSuggestedAssets2.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
+    </fx:script>
+    <Button text="Select Confdb File" onAction="#chooseFile" MigPane.cc="skip, gap :push, gaptop 15, wrap" />
+    <Button text="Create MAL file" onAction="#executeMavenGoal" MigPane.cc="skip, gap :push, gaptop 15, wrap" />
+    <Button text="Check Attack graph using 0.0.3-4 version" onAction="#runOldMAL" MigPane.cc="skip, gap :push, gaptop 15, wrap" />
+    <Button text="Copy the path to jar to open in SecuriCAD" onAction="#copyPathToJar" MigPane.cc="skip, gap :push, gaptop 15, wrap" />
+    <Label fx:id="statusMessageLabel" styleClass="hello-message" MigPane.cc="span, growx, gaptop 15" />
+    <Label fx:id="pathToJarLabel" text = "Path to jar file to work in securiCAD" styleClass="hello-message" MigPane.cc="span, growx, gaptop 15" />
+
+</MigPane >

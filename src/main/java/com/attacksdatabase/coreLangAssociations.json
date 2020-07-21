@@ -1,0 +1,7 @@
+{
+"Vulnerability": ["ActiveDirectory",
+  "IccpServer",
+  "DataEngineeringServer",
+  "Antivirus",
+  "ProcessCommunicationUnit"]
+}

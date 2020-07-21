@@ -1,0 +1,4 @@
+{
+  "stealingPasswordsFromMemory": ["E existsVulnerability", "<- vulnerabilities [Vulnerability]"],
+  "gainInitialAccess": ["E existsIDS", "<- nextGenerationFirewall [NextGenerationFirewall]"]
+}
