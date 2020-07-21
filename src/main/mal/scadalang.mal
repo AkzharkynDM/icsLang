@@ -1,0 +1,18 @@
+#version: "1.0.0"
+#id: "org.mallang.scadalang"
+
+include "accounts.mal"
+include "communication.mal"
+include "appservers.mal"
+category Container {
+abstract asset Zone{
+ 	}
+abstract asset Database{
+ 	}
+abstract asset AdminAccount{
+ 	}
+abstract asset ServiceAccount{
+ 	}
+abstract asset UserAccount{
+ 	}
+} 

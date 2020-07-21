@@ -1,0 +1,26 @@
+category Security{
+asset AsitedministratorsAccount extends AdminAccount 
+{}
+asset DEAccount extends ServiceAccount 
+{	 |  bruteForce [Bernoulli(0.5)]
+	 |  bribeSCADAEngineer [Exponential(0.1)]
+}
+asset ADLinuxAccount extends UserAccount 
+{	 |  bruteForce [Bernoulli(0.5)]
+	 |  phishSCADAEngineer [Bernoulli(0.5)]
+	 |  bribeSCADAEngineer [Exponential(0.1)]
+}
+asset ADWindowsAccount extends AdminAccount 
+{	 |  bruteForce [Bernoulli(0.5)]
+	 |  phishSCADAEngineer [Bernoulli(0.5)]
+	 |  bribeSCADAEngineer [Exponential(0.1)]
+}
+}
+
+associations{
+DirectoryService	[activedirectory]	1	<--LinuxActiveDirectoryAccess-->	1	[sadmin]	ADLinuxAccount
+DataEngineeringServer	[dataeng]	1	<--DataEngineeringAccess-->	1	[de400]	DEAccount
+DirectoryService	[activedirectory]	1	<--WindowsActiveDirectoryAccess-->	1	[administrator]	ADWindowsAccount
+HumanMachineInterface	[humanmachineinterfaces]	*	<--MMIAccess-->	1	[appserveraccounts]	AsitedministratorsAccount
+
+}

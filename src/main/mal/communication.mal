@@ -1,0 +1,144 @@
+category Networking{
+asset GlobalZone extends Zone 
+{	 |  gainInitialAccess [Exponential(1)]
+		 ->  ntpserver.serverCompromise,
+			physicalShutdownDiod,
+			activedirectory.remoteSystemDiscovery,
+			dnsserver.remoteSystemDiscovery,
+			bypassFirewall,
+			ntpserver.remoteSystemDiscovery,
+			activedirectory.serverCompromise,
+			dnsserver.serverCompromise,
+			nisserver.remoteSystemDiscovery,
+			nisserver.serverCompromise
+	 |  physicalShutdownDiod [Exponential(0.1)]
+		 ->  diod.physicalShutdownDiod
+	 |  bypassFirewall [Bernoulli(0.5)]
+		 ->  firewall.bypassFirewall
+}
+asset DemilitarizedZone extends Zone 
+{	 |  gainInitialAccess [Exponential(1)]
+		 ->  bypassFirewall,
+			accessToDMZ
+	 |  bypassFirewall [Bernoulli(0.5)]
+		 ->  firewall.bypassFirewall
+	 |  accessToDMZ 
+	 |  physicalShutdownDiod [Exponential(0.1)]
+		 ->  diod.physicalShutdownDiod
+}
+asset ManagementZone extends Zone 
+{	 |  gainInitialAccess [Exponential(1)]
+		 ->  physicalShutdownDiod,
+			bypassFirewall
+	 |  physicalShutdownDiod [Exponential(0.1)]
+		 ->  diod.physicalShutdownDiod
+	 |  bypassFirewall [Bernoulli(0.5)]
+		 ->  firewall.bypassFirewall
+}
+asset ProductionZone extends Zone 
+{	 |  gainInitialAccess [Exponential(1)]
+		 ->  accessToProd,
+			physicalShutdownDiod
+	 |  accessToProd 
+	 |  physicalShutdownDiod [Exponential(0.1)]
+		 ->  diod.physicalShutdownDiod
+	 |  bypassFirewall [Bernoulli(0.5)]
+		 ->  firewall.bypassFirewall
+}
+asset SupervisionZone extends Zone 
+{	 |  gainInitialAccess [Exponential(1)]
+		 ->  physicalShutdownDiod,
+			bypassFirewall
+	 |  physicalShutdownDiod [Exponential(0.1)]
+		 ->  diod.physicalShutdownDiod
+	 |  bypassFirewall [Bernoulli(0.5)]
+		 ->  firewall.bypassFirewall
+}
+asset WorkstationZone extends Zone 
+{	 |  gainInitialAccess [Exponential(1)]
+		 ->  physicalShutdownDiod,
+			bypassFirewall
+	 |  physicalShutdownDiod [Exponential(0.1)]
+		 ->  diod.physicalShutdownDiod
+	 |  bypassFirewall [Bernoulli(0.5)]
+		 ->  firewall.bypassFirewall
+}
+asset Firewall extends Host 
+{	 |  bypassFirewall [Bernoulli(0.5)]
+		 ->  workstationzone.bypassFirewall,
+			accessRouter,
+			globalzone.bypassFirewall,
+			managementzone.bypassFirewall,
+			productionzone.bypassFirewall,
+			supervisionzone.bypassFirewall,
+			demilitarizedzone.bypassFirewall
+	 |  accessRouter 
+		 ->  router.reconfigureRouter
+}
+asset Diod
+{	 |  physicalShutdownDiod [Exponential(0.1)]
+		 ->  productionzone.physicalShutdownDiod,
+			managementzone.physicalShutdownDiod,
+			demilitarizedzone.physicalShutdownDiod,
+			globalzone.physicalShutdownDiod,
+			workstationzone.physicalShutdownDiod,
+			supervisionzone.physicalShutdownDiod
+}
+asset Router
+{	 |  reconfigureRouter 
+		 ->  firewall.accessRouter
+}
+asset NextGenerationFirewall
+{	 |  exploitVulnerableFunction 
+}
+asset DNSServer extends Host 
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  shutdownDNSService,
+			poisonDNS
+	 |  shutdownDNSService 
+	 |  poisonDNS 
+	 |  remoteSystemDiscovery [Bernoulli(0.5)]
+		 ->  serverCompromise
+}
+asset NISServer extends Host 
+{	 |  serverCompromise [Bernoulli(0.5)]
+	 |  remoteSystemDiscovery [Bernoulli(0.5)]
+		 ->  serverCompromise
+}
+asset NTPServer extends Host 
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  alterClockConfigurations,
+			stopService
+	 |  alterClockConfigurations [Bernoulli(0.5)]
+	 |  stopService 
+	 |  remoteSystemDiscovery [Bernoulli(0.5)]
+		 ->  serverCompromise
+}
+}
+
+associations{
+Firewall	[firewall]	*	<--SupervisionZoneAccess-->	*	[supervisionzone]	SupervisionZone
+Diod	[diod]	1	<--DiodAccess-->	1	[workstationzone]	WorkstationZone
+AppServer	[appservers]	1	<--AppServerAccess-->	1	[globalzone]	GlobalZone
+AppServer	[appservers]	1	<--AppServerAccess-->	1	[supervisionzone]	SupervisionZone
+AppServer	[appservers]	1	<--AppServerAccess-->	1	[workstationzone]	WorkstationZone
+Diod	[diod]	1	<--DiodAccess-->	1	[demilitarizedzone]	DemilitarizedZone
+Diod	[diod]	1	<--DiodAccess-->	1	[managementzone]	ManagementZone
+GlobalZone	[lans]	*	<--NISServerAccess-->	*	[nisserver]	NISServer
+GlobalZone	[lans]	*	<--NTPServerAccess-->	*	[ntpserver]	NTPServer
+AppServer	[appservers]	1	<--AppServerAccess-->	1	[managementzone]	ManagementZone
+Firewall	[firewall]	1	<--RouterAccess-->	1	[router]	Router
+GlobalZone	[lans]	*	<--DNSServerAccess-->	*	[dnsserver]	DNSServer
+Diod	[diod]	1	<--DiodAccess-->	1	[productionzone]	ProductionZone
+Firewall	[firewall]	*	<--ProductionZoneAccess-->	*	[productionzone]	ProductionZone
+Diod	[diod]	1	<--DiodAccess-->	1	[supervisionzone]	SupervisionZone
+GlobalZone	[lans]	*	<--ActiveDirectoryAccess-->	*	[activedirectory]	DirectoryService
+Firewall	[firewall]	*	<--GlobalZoneAccess-->	*	[globalzone]	GlobalZone
+Firewall	[firewall]	*	<--ManagementZoneAccess-->	*	[managementzone]	ManagementZone
+Firewall	[firewall]	*	<--WorkstationZoneAccess-->	*	[workstationzone]	WorkstationZone
+AppServer	[appservers]	1	<--AppServerAccess-->	1	[productionzone]	ProductionZone
+Firewall	[firewall]	*	<--DemilitarizedZoneAccess-->	*	[demilitarizedzone]	DemilitarizedZone
+AppServer	[appservers]	1	<--AppServerAccess-->	1	[demilitarizedzone]	DemilitarizedZone
+Diod	[diod]	1	<--DiodAccess-->	1	[globalzone]	GlobalZone
+
+}

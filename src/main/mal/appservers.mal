@@ -1,0 +1,343 @@
+category System{
+asset DirectoryService extends Host
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  obtainPasswordFromMemory,
+			remoteSystemDiscovery,
+			accessLogs
+	 |  obtainPasswordFromMemory [Bernoulli(0.5)]
+	 |  remoteSystemDiscovery [Bernoulli(0.5)]
+		 ->  pcus.serverCompromise,
+			hmis.serverCompromise
+	 |  accessLogs 
+}
+asset AppServer
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  remoteSystemDiscovery,
+			accessingLogsToCollectInformation,
+			useDefaultCredentials
+	 &  remoteSystemDiscovery [Bernoulli(0.5)]
+	 |  useDefaultCredentials [Bernoulli(0.5)]
+	    -> administrativeAccessToAppServer,
+	    serviceStop
+	 |  obtainValidAccount [Bernoulli(0.5)]
+		 ->  administrativeAccessToAppServer,
+			dataExfiltration,
+			goToOtherSystemComponents
+	 |  dataExfiltration [Exponential(0.1)]
+	    -> dataCorruption
+	 |  serviceStop [Bernoulli(0.5)]
+	 |  accessingLogsToCollectInformation [Exponential(1)]
+	    -> serviceDiscovery,
+	        obtainValidAccount
+	 |  serviceDiscovery [Exponential(1)]
+		 ->  serviceStop,
+			manInTheMiddle
+	 |  manInTheMiddle [Exponential(1)]
+		 ->  goToOtherSystemComponents
+	 |  administrativeAccessToAppServer [Exponential(0.1)]
+	    -> dataExfiltration,
+	        installRogueMasterDevice,
+	        masquerade
+	 |  installRogueMasterDevice [Bernoulli(0.5)]
+		 ->  collectData
+	 |  collectData 
+	 |  dataCorruption [Exponential(0.1)]
+	 |  goToOtherSystemComponents
+	    -> audiblealarm.startAlarm,
+           audiblealarm.unbootAlarm,
+           products.productInfection,
+                       			iccpserver.serverCompromise,
+                       			postgredatabases.bypassInputValidation,
+                       			oracledatabases.bypassInputValidation,
+                       			backupserver.serverCompromise,
+                       			realtimedatabases.bypassInputValidation,
+                       			products.productCorruption,
+                       			products.productInfection,
+                       			pcus.serverCompromise,
+                       			antivirus.serverCompromise,
+                       			hmis.serverCompromise
+	 |  masquerade [Bernoulli(0.5)]
+	 # onDemandAccount
+		 ->  administrativeAccessToAppServer
+	 # networkSegregation
+		 ->  manInTheMiddle
+	 # logsDataEncryption
+		 ->  accessingLogsToCollectInformation
+}
+abstract asset Host
+{	 |  serverCompromise [Bernoulli(0.5)]
+}
+asset OracleDatabase extends Database 
+{	 |  bypassInputValidation [Bernoulli(0.5)]
+		 ->  sqlInjection
+	 |  sqlInjection [Exponential(0.1)]
+	    -> commandLineExecutionThroughSQLInjection
+	 |  commandLineExecutionThroughSQLInjection [Bernoulli(0.5)]
+	    -> accessingLogsToCollectInformation
+	 |  accessingLogsToCollectInformation [Exponential(1)]
+	    -> obtainValidAccount
+	 |  obtainValidAccount [Bernoulli(0.5)]
+		 ->  administrativeAccessToDatabase
+	 |  administrativeAccessToDatabase [Exponential(0.1)]
+	    -> dataCorruption,
+	        dataExfiltration
+	 |  dataCorruption [Exponential(0.1)]
+	 |  dataExfiltration [Exponential(0.1)]
+	 # sanitizeClientSideInput
+		 ->  sqlInjection,
+			commandLineExecutionThroughSQLInjection,
+			bypassInputValidation
+	 # validateClientSideInput
+		 ->  bypassInputValidation
+	 # usePreparedStatement
+		 ->  sqlInjection,
+			commandLineExecutionThroughSQLInjection
+	 # onDemandAccount
+		 ->  administrativeAccessToDatabase
+}
+asset PostgreDatabase extends Database 
+{	    |  bypassInputValidation [Bernoulli(0.5)]
+    		 ->  sqlInjection
+    	 |  sqlInjection [Exponential(0.1)]
+    	    -> commandLineExecutionThroughSQLInjection
+    	 |  commandLineExecutionThroughSQLInjection [Bernoulli(0.5)]
+    	    -> accessingLogsToCollectInformation
+    	 |  accessingLogsToCollectInformation [Exponential(1)]
+    	    -> obtainValidAccount
+    	 |  obtainValidAccount [Bernoulli(0.5)]
+    		 ->  administrativeAccessToDatabase
+    	 |  administrativeAccessToDatabase [Exponential(0.1)]
+    	     -> dataCorruption,
+    	        dataExfiltration
+    	 |  dataCorruption [Exponential(0.1)]
+         |  dataExfiltration [Exponential(0.1)]
+    	 # sanitizeClientSideInput
+    		 ->  sqlInjection,
+    			commandLineExecutionThroughSQLInjection,
+    			bypassInputValidation
+    	 # validateClientSideInput
+    		 ->  bypassInputValidation
+    	 # usePreparedStatement
+    		 ->  sqlInjection,
+    			commandLineExecutionThroughSQLInjection
+    	 # onDemandAccount
+    		 ->  administrativeAccessToDatabase
+}
+asset RealTimeDatabase extends Database 
+{	 |  bypassInputValidation [Bernoulli(0.5)]
+         		 ->  sqlInjection
+         	 |  sqlInjection [Exponential(0.1)]
+         	    -> commandLineExecutionThroughSQLInjection
+         	 |  commandLineExecutionThroughSQLInjection [Bernoulli(0.5)]
+         	    -> accessingLogsToCollectInformation
+         	 |  accessingLogsToCollectInformation [Exponential(1)]
+         	    -> obtainValidAccount
+         	 |  obtainValidAccount [Bernoulli(0.5)]
+         		 ->  administrativeAccessToDatabase
+         	 |  administrativeAccessToDatabase [Exponential(0.1)]
+         	     -> dataCorruption,
+         	        dataExfiltration
+         	 |  dataCorruption [Exponential(0.1)]
+              |  dataExfiltration [Exponential(0.1)]
+         	 # sanitizeClientSideInput
+         		 ->  sqlInjection,
+         			commandLineExecutionThroughSQLInjection,
+         			bypassInputValidation
+         	 # validateClientSideInput
+         		 ->  bypassInputValidation
+         	 # usePreparedStatement
+         		 ->  sqlInjection,
+         			commandLineExecutionThroughSQLInjection
+         	 # onDemandAccount
+         		 ->  administrativeAccessToDatabase
+}
+asset BackupServer
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  accessBackupFiles,
+			useDefaultCredentials
+	 |  accessBackupFiles [Bernoulli(0.5)]
+	    -> obtainValidAccount
+	 |  useDefaultCredentials [Bernoulli(0.5)]
+	    -> administrativeAccess
+	 |  obtainValidAccount [Bernoulli(0.5)]
+		 ->  administrativeAccess,
+			dataExfiltration
+	 |  administrativeAccess [Exponential(0.1)]
+	    -> dataExfiltration
+	 |  dataExfiltration [Exponential(0.1)]
+	 # encryptStorageData
+		 ->  administrativeAccess
+}
+asset IccpServer extends Host 
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  remoteFileCopy,
+			remoteSystemDiscovery,
+			accessingLogsToCollectInformation
+	 |  remoteFileCopy [Bernoulli(0.5)]
+	  -> obtainPasswordFromMemory
+	 &  remoteSystemDiscovery [Bernoulli(0.5)]
+	 |  accessingLogsToCollectInformation [Exponential(1)]
+	    -> obtainValidAccount
+	 &  obtainValidAccount [Bernoulli(0.5)]
+		 ->  goToOtherSystemComponents
+	 |  goToOtherSystemComponents
+	    ->  appservers.serverCompromise
+	 |  obtainPasswordFromMemory [Bernoulli(0.5)]
+	    -> obtainValidAccount
+	 # hardenProfile
+		 ->  appservers.serverCompromise
+	 # intrusionDetectionSystem
+		 ->  remoteSystemDiscovery
+}
+asset DataEngineeringServer extends Host 
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  remoteFileCopy,
+			accessLogs,
+			useDefaultCredentials
+	 |  remoteFileCopy [Bernoulli(0.5)]
+	 |  accessLogs 
+	 |  useDefaultCredentials [Bernoulli(0.5)]
+	 |  obtainPasswordFromMemory [Bernoulli(0.5)]
+	 |  stealingPasswordsFromMemory [Bernoulli(0.5)]
+	 |  obtainValidAccount [Bernoulli(0.5)]
+		 ->  administrativeAccess
+	 |  administrativeAccess [Exponential(0.1)]
+	 |  accessingLogsToCollectInformation [Exponential(1)]
+	 |  serviceDiscovery [Exponential(1)]
+	 |  administrativeAccessToDEServer [Exponential(0.1)]
+	 |  dataExfiltration [Exponential(0.1)]
+	 # whitelistHosts
+		 ->  serviceDiscovery
+	 # onDemandAccount
+		 ->  administrativeAccessToDEServer
+}
+asset Product
+{	 |  productInfection [Bernoulli(0.5)]
+	 |  productCorruption [Exponential(0.1)]
+	 # applyApplicationSecurityGuidelines
+		 ->  productInfection,
+			productCorruption
+}
+asset Alarm
+{	 |  unbootAlarm [Bernoulli(0.5)]
+	 |  startAlarm [Bernoulli(0.5)]
+}
+asset HumanMachineInterface
+{	 |  serverCompromise [Bernoulli(0.5)]
+        -> accessingLogsToCollectInformation,
+            manInTheMiddle
+	 |  accessingLogsToCollectInformation [Exponential(1)]
+	    -> obtainValidAccount
+	 |  obtainValidAccount [Bernoulli(0.5)]
+		 ->  modifyAlarmSettings,
+			administrativeAccessToHMI
+	 |  modifyAlarmSettings [Exponential(0.1)]
+	    -> audiblealarm.unbootAlarm,
+	        audiblealarm.startAlarm
+	 |  manInTheMiddle [Exponential(1)]
+		 ->  modifyAlarmSettings,
+			remoteSystemDiscovery
+	 &  remoteSystemDiscovery [Bernoulli(0.5)]
+		 ->  appservers.serverCompromise,
+			activedirectory.serverCompromise
+	 |  administrativeAccessToHMI [Exponential(0.1)]
+	    -> placeRansomware
+	 |  placeRansomware [Bernoulli(0.5)]
+	 # hardenProfile
+		 ->  placeRansomware
+	 # intrusionDetectionSystem
+		 ->  remoteSystemDiscovery,
+			manInTheMiddle
+	 # scheduleBackup
+		 ->  placeRansomware
+	 # malwareDetectionAndAntivirus
+		 ->  placeRansomware
+	 # onDemandAccount
+		 ->  administrativeAccessToHMI
+}
+asset Antivirus extends Host 
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  remoteFileCopy,
+			remoteSystemDiscovery,
+			accessingLogsToCollectInformation,
+			useDefaultCredentials
+	 |  remoteFileCopy [Bernoulli(0.5)]
+	    -> obtainPasswordFromMemory
+	 &  remoteSystemDiscovery [Bernoulli(0.5)]
+	 |  useDefaultCredentials [Bernoulli(0.5)]
+	    -> serviceStop,
+	        administrativeAccess
+	 |  obtainValidAccount [Bernoulli(0.5)]
+	    ->  appservers.serverCompromise
+	 |  serviceStop [Bernoulli(0.5)]
+	 |  administrativeAccess [Exponential(0.1)]
+	    -> manInTheMiddle,
+	        modifyConfigurationOfAntivirusAgentsAndRepositories
+	 |  accessingLogsToCollectInformation [Exponential(1)]
+	    -> serviceDiscovery,
+	        obtainValidAccount
+	 |  serviceDiscovery [Exponential(1)]
+		 ->  manInTheMiddle,
+			serviceStop
+	 |  manInTheMiddle [Exponential(1)]
+	    ->  appservers.serverCompromise
+	 |  modifyConfigurationOfAntivirusAgentsAndRepositories [Exponential(0.1)]
+	 |  obtainPasswordFromMemory [Bernoulli(0.5)]
+	    -> obtainValidAccount
+	 |  stealingPasswordsFromMemory [Bernoulli(0.5)]
+}
+asset ProcessCommunicationUnit extends Host 
+{	 |  serverCompromise [Bernoulli(0.5)]
+		 ->  remoteFileCopy,
+			remoteSystemDiscovery,
+			accessingLogsToCollectInformation,
+			useDefaultCredentials,
+			rtus.remoteSystemDiscovery
+	 |  remoteFileCopy [Bernoulli(0.5)]
+	 -> obtainPasswordFromMemory
+	 &  remoteSystemDiscovery [Bernoulli(0.5)]
+	 |  useDefaultCredentials [Bernoulli(0.5)]
+	 	->  serviceStop,
+	 	    administrativeAccessToPCU
+	 |  obtainValidAccount [Bernoulli(0.5)]
+	    ->  appservers.serverCompromise,
+     	    activedirectory.serverCompromise
+	 |  serviceStop [Bernoulli(0.5)]
+	    -> shutDownPCU
+	 |  accessingLogsToCollectInformation [Exponential(1)]
+	    -> serviceDiscovery,
+	        obtainValidAccount
+	 |  serviceDiscovery [Exponential(1)]
+		 ->  serviceStop,
+		    obtainValidAccount
+	 |  administrativeAccessToPCU [Exponential(0.1)]
+	    -> shutDownPCU
+	 |  shutDownPCU [Exponential(0.1)]
+	 |  obtainPasswordFromMemory [Bernoulli(0.5)]
+	  -> obtainValidAccount
+	 # onDemandAccount
+		 ->  administrativeAccessToPCU
+}
+asset RemoteTerminalUnit
+{	 |  remoteSystemDiscovery [Bernoulli(0.5)]
+        ->  pcus.serverCompromise
+}
+}
+
+associations{
+AppServer	[appservers]	1	<--AntivirusAccess-->	*	[antivirus]	Antivirus
+AppServer	[appservers]	*	<--AlarmAccessFromAppServer-->	1	[audiblealarm]	Alarm
+ProcessCommunicationUnit	[pcus]	1	<--ActiveDirectoryAccess-->	1	[activedirectory]	DirectoryService
+BackupServer	[backupserver]	1	<--BackupServerAccess-->	1	[appservers]	AppServer
+HumanMachineInterface	[hmis]	1	<--ActiveDirectoryAccess-->	1	[activedirectory]	DirectoryService
+AppServer	[appservers]	*	<--AppServerAccess-->	*	[hmis]	HumanMachineInterface
+HumanMachineInterface	[hmis]	*	<--AlarmAccessFromMMI-->	1	[audiblealarm]	Alarm
+Product	[products]	1	<--ProductAccess-->	1	[appservers]	AppServer
+ProcessCommunicationUnit	[pcus]	*	<--RtuAccess-->	*	[rtus]	RemoteTerminalUnit
+AppServer	[appservers]	*	<--DatabaseAccess-->	*	[realtimedatabases]	RealTimeDatabase
+AppServer	[appservers]	*	<--DatabaseAccess-->	*	[postgredatabases]	PostgreDatabase
+IccpServer	[iccpserver]	*	<--AppServerAccess-->	*	[appservers]	AppServer
+AppServer	[appservers]	*	<--DatabaseAccess-->	*	[oracledatabases]	OracleDatabase
+ProcessCommunicationUnit	[pcus]	*	<--RtuAccess-->	1	[appservers]	AppServer
+
+}
